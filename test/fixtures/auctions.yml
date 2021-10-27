@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  expiration_date: 2021-10-27 01:39:47
+  starting_price: 1.5
+  price: 1.5
+  status: 1
+
+two:
+  title: MyString
+  description: MyText
+  expiration_date: 2021-10-27 01:39:47
+  starting_price: 1.5
+  price: 1.5
+  status: 1

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @auction.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @auction.description %>
+</p>
+
+<p>
+  <strong>Expiration date:</strong>
+  <%= @auction.expiration_date %>
+</p>
+
+<p>
+  <strong>Starting price:</strong>
+  <%= @auction.starting_price %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @auction.price %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @auction.status %>
+</p>
+
+<%= link_to 'Edit', edit_auction_path(@auction) %> |
+<%= link_to 'Back', auctions_path %>

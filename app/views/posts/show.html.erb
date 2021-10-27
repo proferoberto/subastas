@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+  <h1>Detalles de la publicacion</h1>
+  <div>
+    <strong>Codigo:</strong>
+    <%= @post.id %>
+  </div>
+  <div>
+    <strong>Descripcion:</strong>
+    <%= @post.description %>
+  </div>
+  <div>
+    <strong>Fecha de creacion:</strong>
+    <%= @post.created_at %>
+  </div>
+  <div>
+    <strong>Fecha de actualizacion:</strong>
+    <%= @post.updated_at %>
+  </div>
+
+<%= link_to 'Edit', edit_user_post_path(@user, @post) %> |
+<%= link_to 'Back', user_posts_path(@user) %>
