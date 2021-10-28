@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :auction_owner %>
+    <%= form.collection_select :user_id, @users, :id, :name%>
+  </div>
+
+  <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
@@ -29,16 +34,6 @@
   <div class="field">
     <%= form.label :starting_price %>
     <%= form.text_field :starting_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.number_field :status %>
   </div>
 
   <div class="actions">

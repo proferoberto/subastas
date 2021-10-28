@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Auction Details</h1>
 <p>
   <strong>Title:</strong>
   <%= @auction.title %>
@@ -29,6 +30,12 @@
   <strong>Status:</strong>
   <%= @auction.status %>
 </p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= "#{@owner.name.capitalize} #{@owner.lastname}" %>
+</p>
+
 
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>

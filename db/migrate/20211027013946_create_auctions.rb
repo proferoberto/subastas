@@ -6,7 +6,7 @@ class CreateAuctions < ActiveRecord::Migration[6.1]
       t.datetime :expiration_date
       t.float :starting_price
       t.float :price
-      t.integer :status
+      t.integer :status, default: 0
 
       t.timestamps
     end

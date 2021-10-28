@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_10_27_013946) do
     t.datetime "expiration_date"
     t.float "starting_price"
     t.float "price"
-    t.integer "status"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
