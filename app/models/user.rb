@@ -13,4 +13,13 @@ class User < ApplicationRecord
     has_many :posts
     has_many :participants
     has_many :auctions, through: :participants
+
+    #callbacks
+    before_save :format_names
+    
+    private
+    def format_names
+        self.name.downcase!
+        self.lastname.downcase!
+    end
 end

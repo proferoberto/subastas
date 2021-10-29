@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>id</th>
       <th>Title</th>
       <th>Description</th>
       <th>Expiration date</th>
@@ -18,6 +19,7 @@
   <tbody>
     <% @auctions.each do |auction| %>
       <tr>
+        <td><%= auction.id %></td>
         <td><%= auction.title %></td>
         <td><%= auction.description %></td>
         <td><%= auction.expiration_date %></td>

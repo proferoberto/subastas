@@ -5,4 +5,12 @@ class Auction < ApplicationRecord
     # Relationships
     has_many :participants
     has_many :users, through: :participants
+
+    #callback
+    before_create :set_price
+
+    private
+    def set_price
+        self.price = self.starting_price
+    end
 end
