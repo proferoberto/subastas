@@ -3,7 +3,7 @@ class AuctionsController < ApplicationController
 
   # GET /auctions or /auctions.json
   def index
-    @auctions = Auction.all
+    @auctions = current_user.auctions
   end
 
   # GET /auctions/1 or /auctions/1.json
@@ -13,7 +13,6 @@ class AuctionsController < ApplicationController
 
   # GET /auctions/new
   def new
-    @users = User.all
     @auction = Auction.new
   end
 
@@ -25,8 +24,7 @@ class AuctionsController < ApplicationController
   # POST /auctions or /auctions.json
   def create
     @auction = Auction.new(auction_params)
-    user = User.find(params[:auction][:user_id])
-    user.auctions << @auction
+    current_user.auctions << @auction
     respond_to do |format|
       if @auction.save
         format.html { redirect_to @auction, notice: "Auction was successfully created." }

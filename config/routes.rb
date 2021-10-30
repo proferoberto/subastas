@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
+  root 'auctions#index'
+  devise_for :users
   
-  root 'users#index'
   resources :auctions
   resources :users do
     resources :posts
