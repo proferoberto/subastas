@@ -10,11 +10,13 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :auction_owner %>
-    <%= form.collection_select :user_id, @users, :id, :name%>
-  </div>
+  <% if current_user.role == :admin %>
+    <div class="field">
+      
+      <%= form.label :auction_owner %>
+      <%= form.collection_select :user_id, @users, :id, :name%>
+    </div>
+  <%end%>
 
   <div class="field">
     <%= form.label :title %>
