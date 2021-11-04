@@ -8,7 +8,12 @@ class AuctionsController < ApplicationController
 
   # GET /auctions/1 or /auctions/1.json
   def show
-    @owner = @auction.users.first
+    @auction = current_user.auctions.find_by(id: params[:id])
+    @owner = current_user
+    unless @auction
+      flash[:error] = "user unauthorized"
+      redirect_to auctions_path
+    end
   end
 
   # GET /auctions/new
@@ -18,7 +23,6 @@ class AuctionsController < ApplicationController
 
   # GET /auctions/1/edit
   def edit
-    @users = User.all
   end
 
   # POST /auctions or /auctions.json
@@ -38,11 +42,6 @@ class AuctionsController < ApplicationController
 
   # PATCH/PUT /auctions/1 or /auctions/1.json
   def update
-    #byebug
-    new_user = User.find(params[:auction][:user_id])
-    old_user = @auction.users.first
-    @auction.users.delete(old_user)
-    @auction.users << new_user
     respond_to do |format|
       if @auction.update(auction_params)
         format.html { redirect_to @auction, notice: "Auction was successfully updated." }

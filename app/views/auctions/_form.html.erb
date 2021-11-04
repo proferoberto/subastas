@@ -38,7 +38,12 @@
     <%= form.text_field :starting_price %>
   </div>
 
+  <div class="field">
+    <%= form.select(:status, ['active', 'finished', 'aborted'], {include_blank: "Select something"}) %>
+  </div>
+  
   <div class="actions">
     <%= form.submit %>
   </div>
+  
 <% end %>
