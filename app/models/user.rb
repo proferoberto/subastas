@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
     devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+            :recoverable, :rememberable, :validatable, :confirmable, :omniauthable, omniauth_providers: [:google_oauth2] 
     
     attr_accessor :email_confirmation
     
@@ -26,6 +26,21 @@ class User < ApplicationRecord
     before_save :format_names
     before_create :initial_type_user
 
+    def self.from_omniauth(access_token)
+      # Hash de informacion del usuario registrada en el proveedor (google, facebook, twiter)...
+      data = access_token.info # data = {'email' => 'robertdazac@gmail.com', 'name'=> 'roberto'} referencia del hash
+      user = User.find_by(email: data['email'])
+      unless user
+        password = Devise.friendly_token[0,20]
+        user = User.new(email: data['email'], email_confirmation: data['email'],
+                            name: data['first_name'], lastname: data['last_name'],
+                            password: password, password_confirmation: password, age: 18)
+          user.skip_confirmation!
+          user.save
+      end
+      user
+    end
+    
     private
     def format_names
       self.name.downcase!
