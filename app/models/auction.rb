@@ -5,7 +5,8 @@ class Auction < ApplicationRecord
     # Relationships
     has_many :participants
     has_many :users, through: :participants
-
+    has_one_attached :image
+    
     #callback
     before_create :set_price
 

@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Auction Details</h1>
+<h1><%= @auction.title%></h1>
+<% if @auction.image.attached? %>
+  <image src="<%=url_for(@auction.image)%> height=150 width=150">
+<% end %>
+<h2>Acution Details</h2>
 <p>
   <strong>Title:</strong>
   <%= @auction.title %>
